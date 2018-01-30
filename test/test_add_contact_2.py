@@ -16,7 +16,6 @@ def test_add_contact_2(app):
     app.contact.fill_the_form(Contacts(firstname="Oksana", middlename="Oksana", lastname="Prokopek", nickname="ProOksana", title="Test_title", company="Test_Company",
                         address="Wrocław, ul. Damrota 48/5", mobile="500300488", home="500300488", work="500300488",
                         email="prokopekoksana@gmail.com"))
-    app.contact.submit_add_new()
     app.session.logout()
 
 def test_add_empty_contact_2(app):
@@ -26,7 +25,6 @@ def test_add_empty_contact_2(app):
                         address="", mobile="", home="",
                         work="",
                         email=""))
-    app.contact.submit_add_new()
     app.session.logout()
 
 
