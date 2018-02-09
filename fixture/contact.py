@@ -106,6 +106,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
 
+
     def submit_add_new(self):
         wd = self.app.wd
         wd.find_element_by_name("submit").click()
