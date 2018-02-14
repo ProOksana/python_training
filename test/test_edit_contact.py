@@ -9,4 +9,7 @@ def test_edit_contact(app):
                      address="Wrocław, ul. Damrota 48/5", mobile="500300488", home="500300488", work="500300488",
                      email="prokopekoksana@gmail.com"))
         app.contact.submit_add_new()
+    old_contacts = app.contact.get_contacts_list()
     app.contact.edit_contact()
+    new_contacts = app.contact.get_contacts_list()
+    assert len(old_contacts) == len(new_contacts)

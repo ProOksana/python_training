@@ -1,3 +1,4 @@
+from model.contact import Contacts
 
 class ContactHelper:
 
@@ -51,6 +52,12 @@ class ContactHelper:
             wd.find_element_by_name("byear").click()
             wd.find_element_by_name("byear").clear()
             wd.find_element_by_name("byear").send_keys("1991")
+        wd.find_element_by_name("submit").click()
+        self.return_to_home_page()
+
+    def return_to_home_page(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
 
     def select_first_contact(self):
         wd = self.app.wd
@@ -126,6 +133,16 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contacts_list(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            cells = element.find_elements_by_tag_name("td")
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contacts(lastname=cells, firstname=cells, id=id))
+        return contacts
 
 
 
