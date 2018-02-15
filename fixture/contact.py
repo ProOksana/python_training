@@ -66,7 +66,7 @@ class ContactHelper:
 
     def edit_contact(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         #editing
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         wd.find_element_by_name("firstname").click()
@@ -122,7 +122,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         #select first contact
         self.select_first_contact()
         #submit deletion
@@ -132,17 +132,17 @@ class ContactHelper:
 
     def count(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
     def get_contacts_list(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         contacts = []
         for element in wd.find_elements_by_name("entry"):
-            cells = element.find_elements_by_tag_name("td")
+            text = element.find_elements_by_tag_name("td")
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contacts(lastname=cells, firstname=cells, id=id))
+            contacts.append(Contacts(lastname=text, firstname=text, id=id))
         return contacts
 
 
