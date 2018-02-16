@@ -64,7 +64,7 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
 
 
-    def edit_contact(self):
+    def edit_contact(self, contact):
         wd = self.app.wd
         self.open_home_page()
         #editing
