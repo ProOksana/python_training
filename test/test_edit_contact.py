@@ -6,16 +6,16 @@ def test_edit_contact(app):
     if app.contact.count() == 0:
         app.contact.open_home_page()
         app.contact.fill_the_form(Contacts(lastname="Prokopek", firstname="Oksana", middlename="Oksana", nickname="ProOksana",
-                     title="Test_title", company="Test_Company",
-                     address="Wrocław, ul. Damrota 48/5", mobile="500300488", home="500300488", work="500300488",
-                     email="prokopekoksana@gmail.com"))
+                                           title="Test_title", company="Test_Company",
+                                           address="Wrocław, ul. Damrota 48/5", mobilephone="500300488", homephone="500300488", workphone="500300488",
+                                           email="prokopekoksana@gmail.com"))
         app.contact.submit_add_new()
     old_contacts = app.contact.get_contacts_list()
     index = randrange(len(old_contacts))
     contact = Contacts(lastname="Prokopek", firstname="Oksana", middlename="Oksana", nickname="ProOksana",
-                     title="Test_title", company="Test_Company",
-                     address="Wrocław, ul. Damrota 48/5", mobile="500300488", home="500300488", work="500300488",
-                     email="prokopekoksana@gmail.com")
+                       title="Test_title", company="Test_Company",
+                       address="Wrocław, ul. Damrota 48/5", mobilephone="500300488", homephone="500300488", workphone="500300488",
+                       email="prokopekoksana@gmail.com")
     contact.id = old_contacts[index].id
     app.contact.edit_contact_by_index(index, contact)
     assert len(old_contacts) == app.contact.count()
